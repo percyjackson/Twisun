@@ -4,6 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Twisun.Prism.Views.ForecastPage"
+             IconImageSource="ic_cloud"
              Title="{Binding Title}">
   
 </ContentPage>

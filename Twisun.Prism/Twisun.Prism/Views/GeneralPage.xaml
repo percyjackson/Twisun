@@ -4,6 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Twisun.Prism.Views.GeneralPage"
+             IconImageSource="ic_ev_station"
              Title="{Binding Title}">
   
 </ContentPage>
