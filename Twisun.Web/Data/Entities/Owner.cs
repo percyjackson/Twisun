@@ -56,6 +56,8 @@ namespace Twisun.Web.Data.Entities
         [Display(Name = "Owner")]
         public string FullName => $"{FirstName} {LastName}";
 
+        public ICollection<Car> Cars { get; set; }
+
         public DateTime Created_at { get; set; }
         public DateTime Updtaed_at { get; set; }
 
