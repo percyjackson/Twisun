@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,23 +17,29 @@ namespace Twisun.Web.Data.Entities
         public string Plaque { get; set; }
         
         [MaxLength(4)]
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public int Model { get; set; }
 
         [Display(Name = "Total KM")]
-        public Decimal TotalKm { get; set; }
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        public float TotalKm { get; set; }
 
         [Display(Name = "Solar KM")]
-        public Decimal SolarKm { get; set; }
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        public float SolarKm { get; set; }
 
         [Display(Name = "Charged Batteries")]
-        public Decimal ChargedBatteries { get; set; }
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        public float ChargedBatteries { get; set; }
 
-        public Owner Owner { get; set; }
+        //public Owner Owner { get; set; }
         public Battery Battery { get; set; }
         public ICollection<Range> Ranges { get; set; }
         public SolarPanel SolarPanel { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime Created_at { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime Updtaed_at { get; set; }
     }
 }
