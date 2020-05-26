@@ -80,7 +80,7 @@ namespace Twisun.Web.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Serial = table.Column<string>(nullable: true),
+                    Serial = table.Column<string>(nullable: false),
                     CarId = table.Column<int>(nullable: false),
                     Created_at = table.Column<DateTime>(nullable: false),
                     Updtaed_at = table.Column<DateTime>(nullable: false)

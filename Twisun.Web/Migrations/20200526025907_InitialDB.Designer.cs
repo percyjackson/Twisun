@@ -10,7 +10,7 @@ using Twisun.Web.Data;
 namespace Twisun.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200521192858_InitialDB")]
+    [Migration("20200526025907_InitialDB")]
     partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,8 @@ namespace Twisun.Web.Migrations
 
                     b.Property<int>("CarId");
 
-                    b.Property<DateTime>("Created_at");
+                    b.Property<DateTime>("Created_at")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<float>("OutletLevel");
 
@@ -41,7 +42,8 @@ namespace Twisun.Web.Migrations
 
                     b.Property<float>("StateOfHealth");
 
-                    b.Property<DateTime>("Updtaed_at");
+                    b.Property<DateTime>("Updtaed_at")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
 
@@ -59,7 +61,8 @@ namespace Twisun.Web.Migrations
 
                     b.Property<float>("ChargedBatteries");
 
-                    b.Property<DateTime>("Created_at");
+                    b.Property<DateTime>("Created_at")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Model")
                         .HasMaxLength(4);
@@ -72,7 +75,8 @@ namespace Twisun.Web.Migrations
 
                     b.Property<float>("TotalKm");
 
-                    b.Property<DateTime>("Updtaed_at");
+                    b.Property<DateTime>("Updtaed_at")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
 
@@ -85,7 +89,8 @@ namespace Twisun.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Created_at");
+                    b.Property<DateTime>("Created_at")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("SolarPanelId");
 
@@ -106,7 +111,8 @@ namespace Twisun.Web.Migrations
 
                     b.Property<int>("CarId");
 
-                    b.Property<DateTime>("Created_at");
+                    b.Property<DateTime>("Created_at")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<float>("Value");
 
@@ -125,11 +131,14 @@ namespace Twisun.Web.Migrations
 
                     b.Property<int>("CarId");
 
-                    b.Property<DateTime>("Created_at");
+                    b.Property<DateTime>("Created_at")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Serial");
+                    b.Property<string>("Serial")
+                        .IsRequired();
 
-                    b.Property<DateTime>("Updtaed_at");
+                    b.Property<DateTime>("Updtaed_at")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
 
