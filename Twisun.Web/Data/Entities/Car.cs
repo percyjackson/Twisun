@@ -32,7 +32,8 @@ namespace Twisun.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public float ChargedBatteries { get; set; }
 
-        //public Owner Owner { get; set; }
+        public Owner Owner { get; set; }
+        public int OwnerId { get; set; }
         public Battery Battery { get; set; }
         public ICollection<Range> Ranges { get; set; }
         public SolarPanel SolarPanel { get; set; }

@@ -11,21 +11,27 @@ namespace Twisun.Web.Data.Entities
     {
         public int Id { get; set; }
 
-        [Required]
+        
         [MaxLength(200)]
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string Email { get; set; }
 
-        [Required]
+        [MaxLength(20)]
+        public string Document { get; set; }
+
+        
         [MaxLength(100)]
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required]
+        
         [MaxLength(300)]
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
+        
         [MaxLength(20)]
         public string Phone { get; set; }
 
@@ -33,11 +39,11 @@ namespace Twisun.Web.Data.Entities
         public string Address { get; set; }
 
         [MaxLength(1)]
-        public Char Gender { get; set; }
+        public Char? Gender { get; set; }
 
-        public int Age { get; set; }
+        public int? Age { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The field {0} is mandatory.")]
         public DateTime Birthday { get; set; }
 
         [MaxLength(200)]
@@ -46,18 +52,16 @@ namespace Twisun.Web.Data.Entities
 
         public string UserType { get; set; }
 
-        //public string FullName 
-        //{
-        //    get
-        //    {
-        //        return $"{FirstName} {LastName}";
-        //    }
-        //}
-
         [Display(Name = "Owner")]
         public string FullName => $"{FirstName} {LastName}";
 
         public ICollection<Car> Cars { get; set; }
+
+        [Display(Name = "Points")]
+        public Point Point { get; set; }
+
+        [Display(Name = "Used coupons")]
+        public ICollection<UsedCoupon> UsedCoupons { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime Created_at { get; set; }
