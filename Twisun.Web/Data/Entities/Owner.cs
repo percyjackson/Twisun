@@ -50,7 +50,7 @@ namespace Twisun.Web.Data.Entities
         [Display(Name = "Profile Image")]
         public string ProfileImage { get; set; }
 
-        public string UserType { get; set; }
+        public int UserType { get; set; }
 
         [Display(Name = "Owner")]
         public string FullName => $"{FirstName} {LastName}";
