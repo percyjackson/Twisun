@@ -32,8 +32,6 @@ namespace Twisun.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public DateTime Birthday { get; set; }
 
-        public int UserType { get; set; }
-
         [Display(Name = "Owner")]
         public string FullName => $"{FirstName} {LastName}";
 
