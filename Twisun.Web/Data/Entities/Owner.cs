@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,44 +12,25 @@ namespace Twisun.Web.Data.Entities
     {
         public int Id { get; set; }
 
-        
-        [MaxLength(200)]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
-        public string Email { get; set; }
+        public User User { get; set; }
 
-        [MaxLength(20)]
-        public string Document { get; set; }
-
-        
-        [MaxLength(100)]
+        [MaxLength(100, ErrorMessage = "The {0} field can not have more than {1} characters")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
-
         
-        [MaxLength(300)]
+        [MaxLength(300, ErrorMessage = "The {0} field can not have more than {1} characters")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        
-        [MaxLength(20)]
-        public string Phone { get; set; }
-
-        [MaxLength(150)]
-        public string Address { get; set; }
-
-        [MaxLength(1)]
+        [MaxLength(1, ErrorMessage = "The {0} field can not have more than {1} characters")]
         public Char? Gender { get; set; }
 
         public int? Age { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public DateTime Birthday { get; set; }
-
-        [MaxLength(200)]
-        [Display(Name = "Profile Image")]
-        public string ProfileImage { get; set; }
 
         public int UserType { get; set; }
 

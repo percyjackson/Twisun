@@ -16,7 +16,7 @@ namespace Twisun.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string Plaque { get; set; }
         
-        [MaxLength(4)]
+        [MaxLength(4, ErrorMessage = "The {0} field can not have more than {1} characters")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public int Model { get; set; }
 
