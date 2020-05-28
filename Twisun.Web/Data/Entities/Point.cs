@@ -11,12 +11,12 @@ namespace Twisun.Web.Data.Entities
         public int Id { get; set; }
         public int Quantity { get; set; }
 
-        //public Owner Owner { get; set; }
-        public Owner OwnerId { get; set; }
+        public Owner Owner { get; set; }
+        public int OwnerId { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime Created_at { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Updtaed_at { get; set; }
+        public DateTime Updated_at { get; set; }
     }
 }

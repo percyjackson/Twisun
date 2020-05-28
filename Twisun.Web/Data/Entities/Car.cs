@@ -41,6 +41,6 @@ namespace Twisun.Web.Data.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime Created_at { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Updtaed_at { get; set; }
+        public DateTime Updated_at { get; set; }
     }
 }
