@@ -34,9 +34,9 @@ namespace Twisun.Web.Data.Entities
         public int CarId { get; set; }
         public ICollection<DailySolarEnergy> DailySolarEnergies { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime Created_at { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Updated_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public DateTime Created_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //public DateTime Updated_at { get; set; }
     }
 }

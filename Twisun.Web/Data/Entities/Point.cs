@@ -14,9 +14,9 @@ namespace Twisun.Web.Data.Entities
         public Owner Owner { get; set; }
         public int OwnerId { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime Created_at { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Updated_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public DateTime Created_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //public DateTime Updated_at { get; set; }
     }
 }

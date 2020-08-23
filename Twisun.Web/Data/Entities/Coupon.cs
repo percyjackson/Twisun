@@ -26,7 +26,7 @@ namespace Twisun.Web.Data.Entities
         [Display(Name = "Claimed coupons")]
         public ICollection<UsedCoupon> UsedCoupons { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime Created_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public DateTime Created_at { get; set; }
     }
 }

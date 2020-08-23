@@ -16,8 +16,8 @@ namespace Twisun.Web.Data.Entities
         public SolarPanel SolarPanel { get; set; }
         public int SolarPanelId { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime Created_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public DateTime Created_at { get; set; }
        
     }
 }

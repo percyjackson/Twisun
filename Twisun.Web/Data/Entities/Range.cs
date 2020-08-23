@@ -17,8 +17,8 @@ namespace Twisun.Web.Data.Entities
         public Car Car { get; set; }
         public int CarId { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime Created_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public DateTime Created_at { get; set; }
         
     }
 }

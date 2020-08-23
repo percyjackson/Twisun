@@ -17,6 +17,14 @@
     <Compile Remove="Migrations\20200528032245_InitialDB.Designer.cs" />
     <Compile Remove="Migrations\20200528032345_InitialDB.cs" />
     <Compile Remove="Migrations\20200528032345_InitialDB.Designer.cs" />
+    <Compile Remove="Migrations\20200528032829_InitialDB.cs" />
+    <Compile Remove="Migrations\20200528032829_InitialDB.Designer.cs" />
+    <Compile Remove="Migrations\20200528035447_InitialDB.cs" />
+    <Compile Remove="Migrations\20200528035447_InitialDB.Designer.cs" />
+    <Compile Remove="Migrations\20200530220353_UpdatedAtCreatedAt.cs" />
+    <Compile Remove="Migrations\20200530220353_UpdatedAtCreatedAt.Designer.cs" />
+    <Compile Remove="Migrations\20200604030732_InitDB.cs" />
+    <Compile Remove="Migrations\20200604030732_InitDB.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

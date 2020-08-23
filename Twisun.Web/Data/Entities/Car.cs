@@ -38,9 +38,13 @@ namespace Twisun.Web.Data.Entities
         public ICollection<Range> Ranges { get; set; }
         public SolarPanel SolarPanel { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime Created_at { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Updated_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public DateTime Created_at { get; set; }
+
+        ///*[Timestamp]
+        //public byte[] Updated_at { get; set; }*/
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //public DateTime Updated_at { get; set; }
+        
     }
 }

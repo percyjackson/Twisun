@@ -43,10 +43,10 @@ namespace Twisun.Web.Data.Entities
         [Display(Name = "Used coupons")]
         public ICollection<UsedCoupon> UsedCoupons { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public DateTime Created_at { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Updated_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public DateTime Created_at { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //public DateTime Updated_at { get; set; }
 
     }
 }

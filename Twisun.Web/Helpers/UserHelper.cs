@@ -27,7 +27,7 @@ namespace Twisun.Web.Helpers
             await _userManager.AddToRoleAsync(user, roleName);
         }
 
-        public async Task CheckRoleAsync(User user, string roleName)
+        public async Task CheckRoleAsync(string roleName)
         {
             bool roleExists = await _roleManager.RoleExistsAsync(roleName);
             if (!roleExists)

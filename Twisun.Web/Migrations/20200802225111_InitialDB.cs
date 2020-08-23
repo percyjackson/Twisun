@@ -44,9 +44,7 @@ namespace Twisun.Web.Migrations
                     Document = table.Column<string>(maxLength: 20, nullable: true),
                     Address = table.Column<string>(maxLength: 150, nullable: true),
                     PicturePath = table.Column<string>(nullable: true),
-                    UserType = table.Column<int>(nullable: false),
-                    Created_at = table.Column<DateTime>(nullable: false),
-                    Updated_at = table.Column<DateTime>(nullable: false)
+                    UserType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -170,9 +168,7 @@ namespace Twisun.Web.Migrations
                     LastName = table.Column<string>(maxLength: 300, nullable: false),
                     Gender = table.Column<string>(maxLength: 1, nullable: true),
                     Age = table.Column<int>(nullable: true),
-                    Birthday = table.Column<DateTime>(nullable: false),
-                    Created_at = table.Column<DateTime>(nullable: false),
-                    Updated_at = table.Column<DateTime>(nullable: false)
+                    Birthday = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -193,9 +189,7 @@ namespace Twisun.Web.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: false),
-                    Points = table.Column<int>(nullable: true),
-                    Created_at = table.Column<DateTime>(nullable: false),
-                    Updated_at = table.Column<DateTime>(nullable: false)
+                    Points = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -219,9 +213,7 @@ namespace Twisun.Web.Migrations
                     TotalKm = table.Column<float>(nullable: false),
                     SolarKm = table.Column<float>(nullable: false),
                     ChargedBatteries = table.Column<float>(nullable: false),
-                    OwnerId = table.Column<int>(nullable: false),
-                    Created_at = table.Column<DateTime>(nullable: false),
-                    Updated_at = table.Column<DateTime>(nullable: false)
+                    OwnerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -241,9 +233,7 @@ namespace Twisun.Web.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Quantity = table.Column<int>(nullable: false),
-                    OwnerId = table.Column<int>(nullable: false),
-                    Created_at = table.Column<DateTime>(nullable: false),
-                    Updated_at = table.Column<DateTime>(nullable: false)
+                    OwnerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -265,8 +255,7 @@ namespace Twisun.Web.Migrations
                     Descrption = table.Column<string>(nullable: false),
                     Cost = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),
-                    PartnerId = table.Column<int>(nullable: false),
-                    Created_at = table.Column<DateTime>(nullable: false)
+                    PartnerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -290,9 +279,7 @@ namespace Twisun.Web.Migrations
                     SolarLevel = table.Column<float>(nullable: false),
                     OutletLevel = table.Column<float>(nullable: false),
                     StateOfHealth = table.Column<float>(nullable: false),
-                    CarId = table.Column<int>(nullable: false),
-                    Created_at = table.Column<DateTime>(nullable: false),
-                    Updated_at = table.Column<DateTime>(nullable: false)
+                    CarId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -312,8 +299,7 @@ namespace Twisun.Web.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Value = table.Column<float>(nullable: false),
-                    CarId = table.Column<int>(nullable: false),
-                    Updated_at = table.Column<DateTime>(nullable: false)
+                    CarId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -337,9 +323,7 @@ namespace Twisun.Web.Migrations
                     FoldedArea = table.Column<float>(nullable: false),
                     UnfoldedArea = table.Column<float>(nullable: false),
                     EstimatedEfficiency = table.Column<float>(nullable: false),
-                    CarId = table.Column<int>(nullable: false),
-                    Created_at = table.Column<DateTime>(nullable: false),
-                    Updated_at = table.Column<DateTime>(nullable: false)
+                    CarId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -359,8 +343,7 @@ namespace Twisun.Web.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CouponId = table.Column<int>(nullable: false),
-                    OwnerId = table.Column<int>(nullable: false),
-                    Created_at = table.Column<DateTime>(nullable: false)
+                    OwnerId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -386,8 +369,7 @@ namespace Twisun.Web.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Value = table.Column<float>(nullable: false),
-                    SolarPanelId = table.Column<int>(nullable: false),
-                    Created_at = table.Column<DateTime>(nullable: false)
+                    SolarPanelId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
