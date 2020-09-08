@@ -20,5 +20,13 @@ namespace Twisun.Web.Data
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<UsedCoupon> UsedCoupons { get; set; }
         public DbSet<Point> Points { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Car>()
+                .HasIndex(t => t.Plaque)
+                .IsUnique();
+        }
     }
 }
