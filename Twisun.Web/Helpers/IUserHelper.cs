@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Twisun.Web.Models;
 using Twisun.Web.Data.Entities;
 
 namespace Twisun.Web.Helpers
@@ -14,5 +15,7 @@ namespace Twisun.Web.Helpers
         Task CheckRoleAsync(string roleName);
         Task AddUserToRoleAsync(User user, string roleName);
         Task<bool> IsUserInRoleAsync(User user, string roleName);
+        Task<SignInResult> LoginAsync(LoginViewModel model);
+        Task LogoutAsync();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +10,7 @@ using Twisun.Web.Data.Entities;
 
 namespace Twisun.Web.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CarsController : Controller
     {
         private readonly DataContext _context;
@@ -70,7 +72,15 @@ namespace Twisun.Web.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    if (ex.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, "Already exists a Car with the same plaque.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    }
+
                 }
             }
             ViewData["OwnerId"] = new SelectList(_context.Owners, "Id", "FirstName", car.OwnerId);
@@ -125,6 +135,20 @@ namespace Twisun.Web.Controllers
                         throw;
                     }
                 }
+                catch (Exception ex)
+                {
+
+                    if (ex.InnerException.Message.Contains("duplicate"))
+                    {
+                        ModelState.AddModelError(string.Empty, "Already exists a Car with the same plaque.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.InnerException.Message);
+                    }
+
+
+                }
                 return RedirectToAction(nameof(Index));
             }
             ViewData["OwnerId"] = new SelectList(_context.Owners, "Id", "FirstName", car.OwnerId);
@@ -147,15 +171,6 @@ namespace Twisun.Web.Controllers
                 return NotFound();
             }
 
-            return View(car);
-        }
-
-        // POST: Cars/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            Car car = await _context.Cars.FindAsync(id);
             _context.Cars.Remove(car);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
