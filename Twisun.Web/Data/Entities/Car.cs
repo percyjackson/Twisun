@@ -16,20 +16,20 @@ namespace Twisun.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public string Plaque { get; set; }
         
-        [MaxLength(4, ErrorMessage = "The {0} field can not have more than {1} characters")]
+        //[MaxLength(4, ErrorMessage = "The {0} field can not have more than {1} characters")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public int Model { get; set; }
 
         [Display(Name = "Total KM")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        //[Required(ErrorMessage = "The field {0} is mandatory.")]
         public float TotalKm { get; set; }
 
         [Display(Name = "Solar KM")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        //[Required(ErrorMessage = "The field {0} is mandatory.")]
         public float SolarKm { get; set; }
 
         [Display(Name = "Charged Batteries")]
-        [Required(ErrorMessage = "The field {0} is mandatory.")]
+        //[Required(ErrorMessage = "The field {0} is mandatory.")]
         public float ChargedBatteries { get; set; }
 
         public Owner Owner { get; set; }
