@@ -12,7 +12,7 @@ namespace Twisun.Web.Data.Entities
         public int Id { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
-        public string Descrption { get; set; }
+        public string Description { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public int Cost { get; set; }
