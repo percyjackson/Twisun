@@ -37,16 +37,6 @@ namespace Twisun.Web.Data.Entities
         public ICollection<Range> Ranges { get; set; }
         public SolarPanel SolarPanel { get; set; }
 
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
-        public DateTime Date { get; set; }
-
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
-        public DateTime DateLocal => Date.ToLocalTime();
-
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
 
     }
 }

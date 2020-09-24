@@ -25,16 +25,5 @@ namespace Twisun.Web.Data.Entities
         [Display(Name = "Claimed coupons")]
         public ICollection<UsedCoupon> UsedCoupons { get; set; }
 
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
-        public DateTime Date { get; set; }
-
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
-        public DateTime DateLocal => Date.ToLocalTime();
-
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
-
     }
 }
