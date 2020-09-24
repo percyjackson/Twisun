@@ -22,9 +22,11 @@ namespace Twisun.Web.Controllers
         }
 
         // GET: Owners
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Owners.ToListAsync());
+            return View( _context.Owners
+                .Include(o => o.User)
+                .Include(o => o.Cars));
         }
 
         // GET: Owners/Details/5
