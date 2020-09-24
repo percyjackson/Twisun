@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Twisun.Web.Data;
 
 namespace Twisun.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200922005550_DeleteReferenceOnDailySolarEnergy")]
+    partial class DeleteReferenceOnDailySolarEnergy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,17 +133,15 @@ namespace Twisun.Web.Migrations
 
             modelBuilder.Entity("Twisun.Web.Data.Entities.Battery", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<float>("Capacity");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<int>("CarId");
 
                     b.Property<float>("OutletLevel");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<float>("SolarLevel");
 
@@ -150,6 +150,9 @@ namespace Twisun.Web.Migrations
                     b.Property<float>("StateOfHealth");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarId")
+                        .IsUnique();
 
                     b.ToTable("Batteries");
                 });
@@ -160,25 +163,19 @@ namespace Twisun.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<float?>("ChargedBatteries");
-
-                    b.Property<DateTime>("Date");
+                    b.Property<float>("ChargedBatteries");
 
                     b.Property<int>("Model");
 
-                    b.Property<int?>("OwnerId");
+                    b.Property<int>("OwnerId");
 
                     b.Property<string>("Plaque")
                         .IsRequired()
                         .HasMaxLength(6);
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<float>("SolarKm");
 
-                    b.Property<float?>("SolarKm");
-
-                    b.Property<float?>("TotalKm");
+                    b.Property<float>("TotalKm");
 
                     b.HasKey("Id");
 
@@ -198,16 +195,10 @@ namespace Twisun.Web.Migrations
 
                     b.Property<int>("Cost");
 
-                    b.Property<DateTime>("Date");
-
                     b.Property<string>("Description")
                         .IsRequired();
 
-                    b.Property<int?>("PartnerId");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
+                    b.Property<int>("PartnerId");
 
                     b.Property<int>("Status");
 
@@ -247,8 +238,6 @@ namespace Twisun.Web.Migrations
 
                     b.Property<DateTime>("Birthday");
 
-                    b.Property<DateTime>("Date");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(100);
@@ -260,12 +249,6 @@ namespace Twisun.Web.Migrations
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(300);
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
-
-                    b.Property<int?>("TotalPoints");
 
                     b.Property<string>("UserId");
 
@@ -282,16 +265,10 @@ namespace Twisun.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date");
-
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.Property<int?>("Points");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("UserId");
 
@@ -308,15 +285,14 @@ namespace Twisun.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date");
-
-                    b.Property<int?>("OwnerId");
+                    b.Property<int>("OwnerId");
 
                     b.Property<int>("Quantity");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OwnerId");
+                    b.HasIndex("OwnerId")
+                        .IsUnique();
 
                     b.ToTable("Points");
                 });
@@ -327,9 +303,7 @@ namespace Twisun.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CarId");
-
-                    b.Property<DateTime>("Date");
+                    b.Property<int>("CarId");
 
                     b.Property<float>("Value");
 
@@ -342,19 +316,17 @@ namespace Twisun.Web.Migrations
 
             modelBuilder.Entity("Twisun.Web.Data.Entities.SolarPanel", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CarId");
 
                     b.Property<int>("Cells");
-
-                    b.Property<DateTime>("Date");
 
                     b.Property<float>("EstimatedEfficiency");
 
                     b.Property<float>("FoldedArea");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("Serial")
                         .IsRequired();
@@ -362,6 +334,9 @@ namespace Twisun.Web.Migrations
                     b.Property<float>("UnfoldedArea");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarId")
+                        .IsUnique();
 
                     b.ToTable("SolarPanels");
                 });
@@ -372,11 +347,11 @@ namespace Twisun.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CouponId");
+                    b.Property<int>("CouponId");
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int?>("OwnerId");
+                    b.Property<int>("OwnerId");
 
                     b.HasKey("Id");
 
@@ -399,8 +374,6 @@ namespace Twisun.Web.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
-
-                    b.Property<DateTime>("Date");
 
                     b.Property<string>("Document")
                         .HasMaxLength(20);
@@ -427,10 +400,6 @@ namespace Twisun.Web.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("PicturePath");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("SecurityStamp");
 
@@ -503,7 +472,7 @@ namespace Twisun.Web.Migrations
                 {
                     b.HasOne("Twisun.Web.Data.Entities.Car", "Car")
                         .WithOne("Battery")
-                        .HasForeignKey("Twisun.Web.Data.Entities.Battery", "Id")
+                        .HasForeignKey("Twisun.Web.Data.Entities.Battery", "CarId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -511,14 +480,16 @@ namespace Twisun.Web.Migrations
                 {
                     b.HasOne("Twisun.Web.Data.Entities.Owner", "Owner")
                         .WithMany("Cars")
-                        .HasForeignKey("OwnerId");
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Twisun.Web.Data.Entities.Coupon", b =>
                 {
                     b.HasOne("Twisun.Web.Data.Entities.Partner", "Partner")
                         .WithMany("Coupons")
-                        .HasForeignKey("PartnerId");
+                        .HasForeignKey("PartnerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Twisun.Web.Data.Entities.DailySolarEnergy", b =>
@@ -545,22 +516,24 @@ namespace Twisun.Web.Migrations
             modelBuilder.Entity("Twisun.Web.Data.Entities.Point", b =>
                 {
                     b.HasOne("Twisun.Web.Data.Entities.Owner", "Owner")
-                        .WithMany("Points")
-                        .HasForeignKey("OwnerId");
+                        .WithOne("Point")
+                        .HasForeignKey("Twisun.Web.Data.Entities.Point", "OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Twisun.Web.Data.Entities.Range", b =>
                 {
                     b.HasOne("Twisun.Web.Data.Entities.Car", "Car")
                         .WithMany("Ranges")
-                        .HasForeignKey("CarId");
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Twisun.Web.Data.Entities.SolarPanel", b =>
                 {
                     b.HasOne("Twisun.Web.Data.Entities.Car", "Car")
                         .WithOne("SolarPanel")
-                        .HasForeignKey("Twisun.Web.Data.Entities.SolarPanel", "Id")
+                        .HasForeignKey("Twisun.Web.Data.Entities.SolarPanel", "CarId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -568,11 +541,13 @@ namespace Twisun.Web.Migrations
                 {
                     b.HasOne("Twisun.Web.Data.Entities.Coupon", "Coupon")
                         .WithMany("UsedCoupons")
-                        .HasForeignKey("CouponId");
+                        .HasForeignKey("CouponId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Twisun.Web.Data.Entities.Owner", "Owner")
                         .WithMany("UsedCoupons")
-                        .HasForeignKey("OwnerId");
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

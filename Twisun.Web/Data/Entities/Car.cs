@@ -22,29 +22,31 @@ namespace Twisun.Web.Data.Entities
 
         [Display(Name = "Total KM")]
         //[Required(ErrorMessage = "The field {0} is mandatory.")]
-        public float TotalKm { get; set; }
+        public float? TotalKm { get; set; }
 
         [Display(Name = "Solar KM")]
         //[Required(ErrorMessage = "The field {0} is mandatory.")]
-        public float SolarKm { get; set; }
+        public float? SolarKm { get; set; }
 
         [Display(Name = "Charged Batteries")]
         //[Required(ErrorMessage = "The field {0} is mandatory.")]
-        public float ChargedBatteries { get; set; }
+        public float? ChargedBatteries { get; set; }
 
         public Owner Owner { get; set; }
-        public int OwnerId { get; set; }
         public Battery Battery { get; set; }
         public ICollection<Range> Ranges { get; set; }
         public SolarPanel SolarPanel { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //public DateTime Created_at { get; set; }
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime Date { get; set; }
 
-        ///*[Timestamp]
-        //public byte[] Updated_at { get; set; }*/
-        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        //public DateTime Updated_at { get; set; }
-        
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime DateLocal => Date.ToLocalTime();
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
     }
 }

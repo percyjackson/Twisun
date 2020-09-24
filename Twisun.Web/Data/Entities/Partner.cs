@@ -20,10 +20,16 @@ namespace Twisun.Web.Data.Entities
 
         public ICollection<Coupon> Coupons { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //public DateTime Created_at { get; set; }
-        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        //public DateTime Updated_at { get; set; }
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime Date { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime DateLocal => Date.ToLocalTime();
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
     }
 }

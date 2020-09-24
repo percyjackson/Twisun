@@ -15,10 +15,17 @@ namespace Twisun.Web.Data.Entities
         public float Value { get; set; }
 
         public Car Car { get; set; }
-        public int CarId { get; set; }
 
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         //public DateTime Created_at { get; set; }
-        
+
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime Date { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime DateLocal => Date.ToLocalTime();
+
     }
 }

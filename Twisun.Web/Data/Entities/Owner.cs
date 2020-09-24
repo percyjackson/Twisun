@@ -32,21 +32,30 @@ namespace Twisun.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public DateTime Birthday { get; set; }
 
-        [Display(Name = "Owner")]
+        [Display(Name = "Full Name")]
         public string FullName => $"{FirstName} {LastName}";
+
+        [Display(Name = "Points")]
+        public int? TotalPoints { get; set; }
 
         public ICollection<Car> Cars { get; set; }
 
-        [Display(Name = "Points")]
-        public Point Point { get; set; }
+        public ICollection<Point> Points { get; set; }
+
 
         [Display(Name = "Used coupons")]
         public ICollection<UsedCoupon> UsedCoupons { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //public DateTime Created_at { get; set; }
-        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        //public DateTime Updated_at { get; set; }
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime Date { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime DateLocal => Date.ToLocalTime();
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
     }
 }

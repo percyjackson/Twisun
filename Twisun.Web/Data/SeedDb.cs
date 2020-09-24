@@ -32,7 +32,7 @@ namespace Twisun.Web.Data
             var partner2 = await CheckUserAsync("555", "Calle 1", "p2twisun@mailinator.com", "300 000 00 00", UserType.Partner);
             await CheckOwnerAsync(admin, "Admin", "Sudo", DateTime.Now);
             var own1 = await CheckOwnerAsync(owner1, "Owner1", "Smith", DateTime.Now);
-            var own2 = await CheckOwnerAsync(owner2, "Owner1", "Sherman", DateTime.Now);
+            var own2 = await CheckOwnerAsync(owner2, "Owner2", "Sherman", DateTime.Now);
             await CheckPartnerAsync(partner1, "partner1 ltda.");
             await CheckPartnerAsync(partner2, "partner2");
             await CheckCarsAsync(own1, own2);

@@ -21,12 +21,20 @@ namespace Twisun.Web.Data.Entities
         public int Status { get; set; }
 
         public Partner Partner { get; set; }
-        public int PartnerId { get; set; }
 
         [Display(Name = "Claimed coupons")]
         public ICollection<UsedCoupon> UsedCoupons { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //public DateTime Created_at { get; set; }
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime Date { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime DateLocal => Date.ToLocalTime();
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
     }
 }

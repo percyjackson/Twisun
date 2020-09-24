@@ -37,4 +37,8 @@
     <ProjectReference Include="..\Twisun.Common\Twisun.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\API\" />
+  </ItemGroup>
+
 </Project>
