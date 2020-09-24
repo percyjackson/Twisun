@@ -136,7 +136,8 @@ namespace Twisun.Web.Migrations
                     b.Property<float>("Capacity");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<float>("OutletLevel");
 
@@ -147,7 +148,8 @@ namespace Twisun.Web.Migrations
                     b.Property<float>("StateOfHealth");
 
                     b.Property<DateTime>("UpdateAt")
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.HasKey("Id");
 
@@ -163,7 +165,8 @@ namespace Twisun.Web.Migrations
                     b.Property<float?>("ChargedBatteries");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<int>("Model");
 
@@ -178,7 +181,8 @@ namespace Twisun.Web.Migrations
                     b.Property<float?>("TotalKm");
 
                     b.Property<DateTime>("UpdateAt")
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.HasKey("Id");
 
@@ -199,7 +203,8 @@ namespace Twisun.Web.Migrations
                     b.Property<int>("Cost");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -209,7 +214,8 @@ namespace Twisun.Web.Migrations
                     b.Property<int>("Status");
 
                     b.Property<DateTime>("UpdateAt")
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.HasKey("Id");
 
@@ -225,7 +231,8 @@ namespace Twisun.Web.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<int?>("SolarPanelId");
 
@@ -249,7 +256,8 @@ namespace Twisun.Web.Migrations
                     b.Property<DateTime>("Birthday");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -266,7 +274,8 @@ namespace Twisun.Web.Migrations
                     b.Property<int?>("TotalPoints");
 
                     b.Property<DateTime>("UpdateAt")
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<string>("UserId");
 
@@ -284,7 +293,8 @@ namespace Twisun.Web.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -292,7 +302,8 @@ namespace Twisun.Web.Migrations
                     b.Property<int?>("Points");
 
                     b.Property<DateTime>("UpdateAt")
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<string>("UserId");
 
@@ -310,7 +321,8 @@ namespace Twisun.Web.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<int?>("OwnerId");
 
@@ -332,7 +344,8 @@ namespace Twisun.Web.Migrations
                     b.Property<int?>("CarId");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<float>("Value");
 
@@ -350,7 +363,8 @@ namespace Twisun.Web.Migrations
                     b.Property<int>("Cells");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<float>("EstimatedEfficiency");
 
@@ -362,7 +376,8 @@ namespace Twisun.Web.Migrations
                     b.Property<float>("UnfoldedArea");
 
                     b.Property<DateTime>("UpdateAt")
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.HasKey("Id");
 
@@ -378,7 +393,8 @@ namespace Twisun.Web.Migrations
                     b.Property<int?>("CouponId");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<int?>("OwnerId");
 
@@ -405,7 +421,8 @@ namespace Twisun.Web.Migrations
                         .IsConcurrencyToken();
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<string>("Document")
                         .HasMaxLength(20);
@@ -438,7 +455,8 @@ namespace Twisun.Web.Migrations
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<DateTime>("UpdateAt")
-                        .ValueGeneratedOnAddOrUpdate();
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);

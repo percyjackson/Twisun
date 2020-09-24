@@ -27,6 +27,53 @@ namespace Twisun.Web.Data
             builder.Entity<Car>()
                 .HasIndex(t => t.Plaque)
                 .IsUnique();
+
+            builder.Entity<Battery>()
+                .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+            builder.Entity<Battery>()
+                .Property(p => p.UpdateAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<Car>()
+               .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+            builder.Entity<Car>()
+                .Property(p => p.UpdateAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<Coupon>()
+               .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+            builder.Entity<Coupon>()
+                .Property(p => p.UpdateAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<DailySolarEnergy>()
+               .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<Owner>()
+                .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+            builder.Entity<Owner>()
+                .Property(p => p.UpdateAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<Partner>()
+                .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+            builder.Entity<Partner>()
+                .Property(p => p.UpdateAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<Point>()
+                .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<Range>()
+                .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<SolarPanel>()
+                .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+            builder.Entity<SolarPanel>()
+                .Property(p => p.UpdateAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<UsedCoupon>()
+                .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+
+            builder.Entity<User>()
+                .Property(p => p.CreatedAt).HasDefaultValueSql("GetDate()");
+            builder.Entity<User>()
+                .Property(p => p.UpdateAt).HasDefaultValueSql("GetDate()");
         }
     }
 }
