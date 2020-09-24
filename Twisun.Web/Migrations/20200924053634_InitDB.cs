@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Twisun.Web.Migrations
 {
-    public partial class InitialDB : Migration
+    public partial class InitDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,7 +44,9 @@ namespace Twisun.Web.Migrations
                     Document = table.Column<string>(maxLength: 20, nullable: true),
                     Address = table.Column<string>(maxLength: 150, nullable: true),
                     PicturePath = table.Column<string>(nullable: true),
-                    UserType = table.Column<int>(nullable: false)
+                    UserType = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
+                    UpdateAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()")
                 },
                 constraints: table =>
                 {
@@ -161,6 +163,8 @@ namespace Twisun.Web.Migrations
                 name: "Owners",
                 columns: table => new
                 {
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
+                    UpdateAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: true),
@@ -168,7 +172,8 @@ namespace Twisun.Web.Migrations
                     LastName = table.Column<string>(maxLength: 300, nullable: false),
                     Gender = table.Column<string>(maxLength: 1, nullable: true),
                     Age = table.Column<int>(nullable: true),
-                    Birthday = table.Column<DateTime>(nullable: false)
+                    Birthday = table.Column<DateTime>(nullable: false),
+                    TotalPoints = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -185,6 +190,8 @@ namespace Twisun.Web.Migrations
                 name: "Partners",
                 columns: table => new
                 {
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
+                    UpdateAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: true),
@@ -206,14 +213,16 @@ namespace Twisun.Web.Migrations
                 name: "Cars",
                 columns: table => new
                 {
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
+                    UpdateAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Plaque = table.Column<string>(maxLength: 6, nullable: false),
-                    Model = table.Column<int>(maxLength: 4, nullable: false),
-                    TotalKm = table.Column<float>(nullable: false),
-                    SolarKm = table.Column<float>(nullable: false),
-                    ChargedBatteries = table.Column<float>(nullable: false),
-                    OwnerId = table.Column<int>(nullable: false)
+                    Model = table.Column<int>(nullable: false),
+                    TotalKm = table.Column<float>(nullable: true),
+                    SolarKm = table.Column<float>(nullable: true),
+                    ChargedBatteries = table.Column<float>(nullable: true),
+                    OwnerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -223,17 +232,18 @@ namespace Twisun.Web.Migrations
                         column: x => x.OwnerId,
                         principalTable: "Owners",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Points",
                 columns: table => new
                 {
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Quantity = table.Column<int>(nullable: false),
-                    OwnerId = table.Column<int>(nullable: false)
+                    OwnerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -243,19 +253,21 @@ namespace Twisun.Web.Migrations
                         column: x => x.OwnerId,
                         principalTable: "Owners",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Coupons",
                 columns: table => new
                 {
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
+                    UpdateAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Descrption = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
                     Cost = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),
-                    PartnerId = table.Column<int>(nullable: false)
+                    PartnerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -265,28 +277,28 @@ namespace Twisun.Web.Migrations
                         column: x => x.PartnerId,
                         principalTable: "Partners",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Batteries",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
+                    UpdateAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
+                    Id = table.Column<int>(nullable: false),
                     Capacity = table.Column<float>(nullable: false),
                     StateOfCharge = table.Column<float>(nullable: false),
                     SolarLevel = table.Column<float>(nullable: false),
                     OutletLevel = table.Column<float>(nullable: false),
-                    StateOfHealth = table.Column<float>(nullable: false),
-                    CarId = table.Column<int>(nullable: false)
+                    StateOfHealth = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Batteries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Batteries_Cars_CarId",
-                        column: x => x.CarId,
+                        name: "FK_Batteries_Cars_Id",
+                        column: x => x.Id,
                         principalTable: "Cars",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -296,10 +308,11 @@ namespace Twisun.Web.Migrations
                 name: "Ranges",
                 columns: table => new
                 {
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Value = table.Column<float>(nullable: false),
-                    CarId = table.Column<int>(nullable: false)
+                    CarId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -309,28 +322,28 @@ namespace Twisun.Web.Migrations
                         column: x => x.CarId,
                         principalTable: "Cars",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SolarPanels",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
+                    UpdateAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
+                    Id = table.Column<int>(nullable: false),
                     Serial = table.Column<string>(nullable: false),
                     Cells = table.Column<int>(nullable: false),
                     FoldedArea = table.Column<float>(nullable: false),
                     UnfoldedArea = table.Column<float>(nullable: false),
-                    EstimatedEfficiency = table.Column<float>(nullable: false),
-                    CarId = table.Column<int>(nullable: false)
+                    EstimatedEfficiency = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SolarPanels", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SolarPanels_Cars_CarId",
-                        column: x => x.CarId,
+                        name: "FK_SolarPanels_Cars_Id",
+                        column: x => x.Id,
                         principalTable: "Cars",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -340,10 +353,11 @@ namespace Twisun.Web.Migrations
                 name: "UsedCoupons",
                 columns: table => new
                 {
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CouponId = table.Column<int>(nullable: false),
-                    OwnerId = table.Column<int>(nullable: false)
+                    CouponId = table.Column<int>(nullable: true),
+                    OwnerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -353,23 +367,24 @@ namespace Twisun.Web.Migrations
                         column: x => x.CouponId,
                         principalTable: "Coupons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_UsedCoupons_Owners_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "Owners",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "DailySolarEnergies",
                 columns: table => new
                 {
+                    CreatedAt = table.Column<DateTime>(nullable: false, defaultValueSql: "GetDate()"),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Value = table.Column<float>(nullable: false),
-                    SolarPanelId = table.Column<int>(nullable: false)
+                    SolarPanelId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -379,7 +394,7 @@ namespace Twisun.Web.Migrations
                         column: x => x.SolarPanelId,
                         principalTable: "SolarPanels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -422,15 +437,15 @@ namespace Twisun.Web.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Batteries_CarId",
-                table: "Batteries",
-                column: "CarId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Cars_OwnerId",
                 table: "Cars",
                 column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cars_Plaque",
+                table: "Cars",
+                column: "Plaque",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Coupons_PartnerId",
@@ -455,19 +470,12 @@ namespace Twisun.Web.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Points_OwnerId",
                 table: "Points",
-                column: "OwnerId",
-                unique: true);
+                column: "OwnerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ranges_CarId",
                 table: "Ranges",
                 column: "CarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SolarPanels_CarId",
-                table: "SolarPanels",
-                column: "CarId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UsedCoupons_CouponId",

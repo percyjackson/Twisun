@@ -10,8 +10,8 @@ using Twisun.Web.Data;
 namespace Twisun.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200924014645_UpdatingAllEntities")]
-    partial class UpdatingAllEntities
+    [Migration("20200924053634_InitDB")]
+    partial class InitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,19 +137,19 @@ namespace Twisun.Web.Migrations
 
                     b.Property<float>("Capacity");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<float>("OutletLevel");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<float>("SolarLevel");
 
                     b.Property<float>("StateOfCharge");
 
                     b.Property<float>("StateOfHealth");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
 
@@ -164,7 +164,8 @@ namespace Twisun.Web.Migrations
 
                     b.Property<float?>("ChargedBatteries");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Model");
 
@@ -174,13 +175,12 @@ namespace Twisun.Web.Migrations
                         .IsRequired()
                         .HasMaxLength(6);
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.Property<float?>("SolarKm");
 
                     b.Property<float?>("TotalKm");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
 
@@ -200,18 +200,18 @@ namespace Twisun.Web.Migrations
 
                     b.Property<int>("Cost");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
                         .IsRequired();
 
                     b.Property<int?>("PartnerId");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.Property<int>("Status");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
 
@@ -226,7 +226,8 @@ namespace Twisun.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("SolarPanelId");
 
@@ -249,7 +250,8 @@ namespace Twisun.Web.Migrations
 
                     b.Property<DateTime>("Birthday");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -263,11 +265,10 @@ namespace Twisun.Web.Migrations
                         .IsRequired()
                         .HasMaxLength(300);
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.Property<int?>("TotalPoints");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("UserId");
 
@@ -284,15 +285,15 @@ namespace Twisun.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.Property<int?>("Points");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
+                    b.Property<DateTime>("UpdateAt")
                         .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("UserId");
@@ -310,7 +311,8 @@ namespace Twisun.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("OwnerId");
 
@@ -331,7 +333,8 @@ namespace Twisun.Web.Migrations
 
                     b.Property<int?>("CarId");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<float>("Value");
 
@@ -348,20 +351,20 @@ namespace Twisun.Web.Migrations
 
                     b.Property<int>("Cells");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<float>("EstimatedEfficiency");
 
                     b.Property<float>("FoldedArea");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.Property<string>("Serial")
                         .IsRequired();
 
                     b.Property<float>("UnfoldedArea");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.HasKey("Id");
 
@@ -376,7 +379,8 @@ namespace Twisun.Web.Migrations
 
                     b.Property<int?>("CouponId");
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("OwnerId");
 
@@ -402,7 +406,8 @@ namespace Twisun.Web.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Document")
                         .HasMaxLength(20);
@@ -430,13 +435,12 @@ namespace Twisun.Web.Migrations
 
                     b.Property<string>("PicturePath");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .ValueGeneratedOnAddOrUpdate();
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);

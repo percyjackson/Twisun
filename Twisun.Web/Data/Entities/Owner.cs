@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Twisun.Web.Data.Entities
 {
-    public class Owner
+    public class Owner : Versioning
     {
         public int Id { get; set; }
 

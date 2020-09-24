@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Twisun.Web.Data.Entities
 {
-    public class Range
+    public class Range : VersioningCreated
     {
         public int Id { get; set; }
 

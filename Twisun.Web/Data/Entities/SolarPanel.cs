@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Twisun.Web.Data.Entities
 {
-    public class SolarPanel
+    public class SolarPanel : Versioning
     {
         [ForeignKey("Car")]
         public int Id { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Twisun.Web.Data.Entities
 {
-    public class DailySolarEnergy
+    public class DailySolarEnergy : VersioningCreated
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "The field {0} is mandatory.")]

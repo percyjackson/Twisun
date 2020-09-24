@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Twisun.Web.Data.Entities
 {
-    public class Car
+    public class Car : Versioning
     {
         public int Id { get; set; }
 

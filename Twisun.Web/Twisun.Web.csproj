@@ -25,6 +25,12 @@
     <Compile Remove="Migrations\20200530220353_UpdatedAtCreatedAt.Designer.cs" />
     <Compile Remove="Migrations\20200604030732_InitDB.cs" />
     <Compile Remove="Migrations\20200604030732_InitDB.Designer.cs" />
+    <Compile Remove="Migrations\20200924044132_InitDB.cs" />
+    <Compile Remove="Migrations\20200924044132_InitDB.Designer.cs" />
+    <Compile Remove="Migrations\20200924044430_InitDB.cs" />
+    <Compile Remove="Migrations\20200924044430_InitDB.Designer.cs" />
+    <Compile Remove="Migrations\20200924052621_AddedDatesForVersioning.cs" />
+    <Compile Remove="Migrations\20200924052621_AddedDatesForVersioning.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Twisun.Web.Data.Entities
 {
-    public class UsedCoupon
+    public class UsedCoupon : VersioningCreated
     {
         public int Id { get; set; }
 
