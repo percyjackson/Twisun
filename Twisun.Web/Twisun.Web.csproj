@@ -33,6 +33,8 @@
     <Compile Remove="Migrations\20200924052621_AddedDatesForVersioning.Designer.cs" />
     <Compile Remove="Migrations\20200924053634_InitDB.cs" />
     <Compile Remove="Migrations\20200924053634_InitDB.Designer.cs" />
+    <Compile Remove="Migrations\20200924165609_InitDB.cs" />
+    <Compile Remove="Migrations\20200924165609_InitDB.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

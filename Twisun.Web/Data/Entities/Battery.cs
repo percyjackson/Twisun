@@ -9,7 +9,6 @@ namespace Twisun.Web.Data.Entities
 {
     public class Battery : Versioning
     {
-        [ForeignKey("Car")]
         public int Id { get; set; }
 
         [Required(ErrorMessage ="The field {0} is mandatory.")]
@@ -23,6 +22,7 @@ namespace Twisun.Web.Data.Entities
         [Required(ErrorMessage = "The field {0} is mandatory.")]
         public float StateOfHealth { get; set; }
 
+        public int CarId { get; set; }
         public Car Car { get; set; }
 
     }

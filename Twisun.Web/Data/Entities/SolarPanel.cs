@@ -9,7 +9,7 @@ namespace Twisun.Web.Data.Entities
 {
     public class SolarPanel : Versioning
     {
-        [ForeignKey("Car")]
+        
         public int Id { get; set; }
 
         [Required(ErrorMessage = "The field {0} is mandatory.")]
@@ -31,6 +31,7 @@ namespace Twisun.Web.Data.Entities
         [Display(Name = "Estimated Efficiency")]
         public float EstimatedEfficiency { get; set; }
 
+        public int CarId { get; set; }
         public Car Car { get; set; }
         public ICollection<DailySolarEnergy> DailySolarEnergies { get; set; }
 

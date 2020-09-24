@@ -131,9 +131,13 @@ namespace Twisun.Web.Migrations
 
             modelBuilder.Entity("Twisun.Web.Data.Entities.Battery", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<float>("Capacity");
+
+                    b.Property<int>("CarId");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -152,6 +156,9 @@ namespace Twisun.Web.Migrations
                         .HasDefaultValueSql("GetDate()");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarId")
+                        .IsUnique();
 
                     b.ToTable("Batteries");
                 });
@@ -358,7 +365,11 @@ namespace Twisun.Web.Migrations
 
             modelBuilder.Entity("Twisun.Web.Data.Entities.SolarPanel", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CarId");
 
                     b.Property<int>("Cells");
 
@@ -380,6 +391,9 @@ namespace Twisun.Web.Migrations
                         .HasDefaultValueSql("GetDate()");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CarId")
+                        .IsUnique();
 
                     b.ToTable("SolarPanels");
                 });
@@ -525,7 +539,7 @@ namespace Twisun.Web.Migrations
                 {
                     b.HasOne("Twisun.Web.Data.Entities.Car", "Car")
                         .WithOne("Battery")
-                        .HasForeignKey("Twisun.Web.Data.Entities.Battery", "Id")
+                        .HasForeignKey("Twisun.Web.Data.Entities.Battery", "CarId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -582,7 +596,7 @@ namespace Twisun.Web.Migrations
                 {
                     b.HasOne("Twisun.Web.Data.Entities.Car", "Car")
                         .WithOne("SolarPanel")
-                        .HasForeignKey("Twisun.Web.Data.Entities.SolarPanel", "Id")
+                        .HasForeignKey("Twisun.Web.Data.Entities.SolarPanel", "CarId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
