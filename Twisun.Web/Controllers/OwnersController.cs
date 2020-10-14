@@ -38,6 +38,11 @@ namespace Twisun.Web.Controllers
             }
 
             var owner = await _context.Owners
+                .Include(o => o.User)
+                .Include(o => o.Cars)
+                .ThenInclude(c => c.SolarPanel)
+                .Include(o => o.Cars)
+                .ThenInclude(c => c.Battery)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (owner == null)
             {
